@@ -53,14 +53,18 @@
     <!--==============================
      Preloader
     ==============================-->
-    <div class="preloader">
+   <div id="preloader-bg" class="preloader">
         <div class="logo" style="display: block; margin-block: -1em;">
             <img src="{{ asset('frontend/assets/img/logo_horizontal_white.png') }}" alt="Pacmedia">
         </div>
-      <div class="preloader-inner">
-        <div class="preloader-progress"></div>
-      </div>      
-    </div>
+      <div id="myProgress" class="preloader-inner">
+        <div id="myBar" class="preloader-progress"></div>
+      </div>
+      <div id="progressLabel"></div>      
+    </div> 
+
+
+   
 
     <div class="popup-search-box">
         <button class="searchClose"><img src="{{ asset('frontend/assets/img/icon/close.svg') }}" alt="img"></button>
@@ -641,17 +645,42 @@
     <script src="{{ asset('frontend/assets/js/jarallax.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/jquery.marquee.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/waypoints.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/progressbar.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/wow.js') }}"></script>
 
     <!-- Main Js File -->
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-   <!--  <script>
-        const preloader = document.querySelector('.preloader');
-      const preloaderProgress = document.querySelector('.preloader-progress');
 
-      preloaderProgress.addEventListener('animationend', () => {
-        preloader.parentNode.removeChild(preloader); 
-    </script> -->
+       <script>
+window.onload = function() {
+  var i = 0;
+  var elem = document.getElementById("myBar");
+  var width = 1;
+  var preloader = document.getElementById("myProgress"); // Get preloader element
+  var backdrop = document.getElementById("preloader-bg"); // Get preloader element
+  var progressLabel = document.getElementById("progressLabel");
+
+  var id = setInterval(frame, 20);
+
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+      elem.style.width = "100%";  // Ensure width is set to 100% explicitly
+      progressLabel.textContent = "100%";
+
+      // Delay for a few seconds before hiding
+      setTimeout(function() {
+        backdrop.style.display = "none";
+      }, 2000); // Adjust delay in milliseconds (2 seconds here)
+    } else {
+      width++;
+      elem.style.width = width + "%";
+      progressLabel.textContent = width + "%";
+    }
+  }
+};
+</script>
+
 </body>
 
 </html>

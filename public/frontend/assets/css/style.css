@@ -1957,14 +1957,15 @@ textarea.is-invalid {
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 999;
+  z-index: 11200;
   background-color: var(--title-color);
+/*  background-color: whitesmoke;*/
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.preloader-inner {
+#myProgress {
   display: block;
   width: 200px; /* Adjust width as needed */
   height: 2px; /* Adjust height as needed */
@@ -1972,13 +1973,29 @@ textarea.is-invalid {
   background-color: #28292c;
 }
 
-.preloader-progress {
+#myBar {
   display: block;
   height: 100%;
-  width: 0; /* Initial width for animation */
+  width: 1%; /* Initial width for animation */
   background-color: var(--theme-color); /* Set the progress bar color */
   border-radius: 10px; /* Adjust the border radius of the progress bar */
-  animation: preloader 2s linear forwards; /* Modified animation settings */
+/*  animation: preloader 2s linear forwards; /* Modified animation settings */*/
+}
+#progressLabel {
+  position: absolute;  /* Absolute positioning for label */
+  margin-top: 30px;  /* Margin from bottom */
+  left: 50%;  /* Center horizontally */
+  transform: translateX(-50%);  /* Center horizontally (avoids double margins) */
+  font-size: 12px;  /* Adjust font size as needed */
+  color: white;  /* Optional label text color */
+}
+@media (max-width: 768px) {  /* Target screens smaller than 768px */
+  #myProgress {
+    margin-top: 50px;  /* Add margin from top on smaller screens */
+  }
+  #progressLabel{
+    margin-top: 80px;    
+  }
 }
 
 
@@ -10664,5 +10681,7 @@ blockquote p {
     margin-top: 20px;  /* Add margin-top on small screens */
   }
 }
+
+
 
 /*# sourceMappingURL=style.css.map */
