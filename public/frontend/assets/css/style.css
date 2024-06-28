@@ -10640,4 +10640,29 @@ blockquote p {
   }
 }
 
+.js-cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex; /* Center content horizontally if needed */
+  justify-content: center; /* Center content horizontally if needed */
+  align-items: center; /* Center content vertically if needed */
+  padding: 10px;
+  background-color: #f2f2f2; /* Adjust background color as needed */
+  z-index: 11000; /* Ensure banner stays on top of other content */
+}
+.js-cookie-consent-agree {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+@media (max-width: 768px) {  /* Adjust breakpoint as needed */
+  .js-cookie-consent .js-cookie-consent-agree {
+    margin-top: 20px;  /* Add margin-top on small screens */
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
